@@ -6,7 +6,7 @@ import com.sudhanshu.notesappcleanarch.feature_note.domain.repository.NoteReposi
 class GetNote(
     private val repository: NoteRepository
 ) {
-    suspend operator fun invoke(id: Int) {
-        repository.getNote(id)
+    suspend operator fun invoke(id: Int) : Note?{
+        return repository.getNote(id)
     }
 }
