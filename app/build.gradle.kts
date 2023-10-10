@@ -72,11 +72,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Compose dependencies
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
-    implementation("androidx.navigation:navigation-compose:2.7.4")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+    implementation("androidx.navigation:navigation-compose:2.6.0")
 
     //Dagger hilt
-    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-beta01")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0-alpha01")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-compiler:2.44")
 

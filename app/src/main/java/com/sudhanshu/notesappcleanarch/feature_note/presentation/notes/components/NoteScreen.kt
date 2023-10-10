@@ -38,11 +38,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.sudhanshu.notesappcleanarch.core.presentation.components.SetStatusBarColor
 import com.sudhanshu.notesappcleanarch.feature_note.presentation.notes.NotesEvent
 import com.sudhanshu.notesappcleanarch.feature_note.presentation.notes.NotesViewModel
+import com.sudhanshu.notesappcleanarch.feature_note.presentation.util.Screens
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -59,7 +62,9 @@ fun NoteScreen(
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    navController.navigate(Screens.AddEditNoteScreen.route)
+                },
                 containerColor = MaterialTheme.colorScheme.primary,
                 contentColor = Color.White
             ) {
@@ -68,6 +73,7 @@ fun NoteScreen(
         }
     ) {
         Modifier.padding(it)
+        SetStatusBarColor(colorId = MaterialTheme.colorScheme.primary.toArgb())
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -112,7 +118,10 @@ fun NoteScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-
+                                navController.navigate(
+                                    Screens.AddEditNoteScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvents(NotesEvent.DeleteNote(note))
